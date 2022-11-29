@@ -23,6 +23,27 @@ void Node_at_tail(Node* &Tail,int D)
 	Tail->Next=temp;
 	Tail=temp;
 }
+void Input(Node* &Head,Node* &Tail)
+{
+	char C;
+	cout<<"Do you want to enter more data?\n(y) for yes (n) for no : ";
+	cin>>C;
+	int D;
+	while(C=='y')
+	{
+		cout<<"Enter the data : ";
+		cin>>D;
+		cout<<"Where do you want to insert?\n(h) for head (t) for tail : ";
+		char Ch;
+		cin>>Ch;
+		if(Ch=='h' || Ch=='H')
+			Node_at_head(Head,D);
+		else
+			Node_at_tail(Tail,D);
+		cout<<"Do you want to enter more data?\n(y) for yes (n) for no : ";
+		cin>>C;
+	}
+}
 void Output(Node* Head)
 {
 	while (Head!= NULL)
@@ -38,23 +59,7 @@ int main()
 	cout<<"Enter the data : ";
 	cin>>D;
 	Node*Head=new Node(D),*Tail=Head;
-	char C;
-	cout<<"Do you want to enter more data?\n(y) for yes (n) for no : ";
-	cin>>C;
-	while(C=='y')
-	{
-		cout<<"Enter the data : ";
-		cin>>D;
-		cout<<"Where do you want to insert?\n(h) for head (t) for tail : ";
-		char Ch;
-		cin>>Ch;
-		if(Ch=='h' || Ch=='H')
-			Node_at_head(Head,D);
-		else
-			Node_at_tail(Tail,D);
-		cout<<"Do you want to enter more data?\n(y) for yes (n) for no : ";
-		cin>>C;
-	}
+	Input(Head,Tail);
 	Output(Head);
 	return 0;
 }
